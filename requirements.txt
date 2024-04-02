@@ -1,0 +1,9 @@
+nest-asyncio==1.6.0
+arize-phoenix==3.13.0
+llama-index==0.10.14
+loguru==0.6.0
+llama-index-callbacks-arize-phoenix==0.1.4
+tree-sitter==0.20.4
+tree-sitter-languages==1.10.2
+pydantic==1.10.13
+gitpython==3.1.42

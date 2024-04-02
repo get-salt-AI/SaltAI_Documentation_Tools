@@ -1,0 +1,42 @@
+{
+    "name": "VAEEncode",
+    "documentation": "This node is designed for encoding images into a latent representation using a specified VAE model. It abstracts the complexity of the encoding process, providing a straightforward way to transform image data into a format suitable for various generative tasks.",
+    "infra_type": "GPU",
+    "source_code": "class VAEEncode:\n    @classmethod\n    def INPUT_TYPES(s):\n        return {\"required\": { \"pixels\": (\"IMAGE\", ), \"vae\": (\"VAE\", )}}\n    RETURN_TYPES = (\"LATENT\",)\n    FUNCTION = \"encode\"\n\n    CATEGORY = \"latent\"\n\n    def encode(self, vae, pixels):\n        t = vae.encode(pixels[:,:,:,:3])\n        return ({\"samples\":t}, )\n",
+    "display_name": "VAE Encode",
+    "output_node": "False",
+    "category": "latent",
+    "class": "VAEEncode",
+    "input_types": {
+        "required": {
+            "pixels": {
+                "comfy_dtype": "IMAGE",
+                "documentation": "Represents the image data to be encoded. Its role is crucial as it serves as the direct input for the encoding process, determining the characteristics of the resulting latent representation.",
+                "python_dtype": "torch.Tensor"
+            },
+            "vae": {
+                "comfy_dtype": "VAE",
+                "documentation": "Specifies the VAE model to be used for encoding. It defines the encoding mechanism and directly influences the quality and attributes of the generated latent representation.",
+                "python_dtype": "comfy.sd.VAE"
+            }
+        }
+    },
+    "output_types": {
+        "latent": {
+            "comfy_dtype": "LATENT",
+            "documentation": "The encoded latent representation of the input image. It encapsulates the essential features extracted during the encoding process.",
+            "python_dtype": "Dict[str, torch.Tensor]"
+        }
+    },
+    "_debug_info": {
+        "_eval_score": "40/40",
+        "_has_unknown": false,
+        "_error": null
+    },
+    "common_nodes": "KSampler,KSamplerAdvanced,SetLatentNoiseMask,ImpactKSamplerBasicPipe,KSampler (Efficient),BNK_Unsampler,LatentUpscale,KSampler //Inspire,DZ_Face_Detailer,LatentUpscaleBy",
+    "usage_doc": "",
+    "_repo_info": {
+        "_repo_url": "https://github.com/comfyanonymous/ComfyUI",
+        "_commit_hash": "36f7face37320ec3c6ac85ec3c625738241deaa9"
+    }
+}

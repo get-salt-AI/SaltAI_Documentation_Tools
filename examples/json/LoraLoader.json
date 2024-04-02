@@ -1,0 +1,62 @@
+{
+    "name": "LoraLoader",
+    "documentation": "The LoraLoader node is designed to dynamically load and apply LoRA (Low-Rank Adaptation) adjustments to models and CLIP instances. It enhances or modifies the behavior of these components by injecting learned parameters, allowing for fine-tuned control over their performance and outputs.",
+    "infra_type": "CPU",
+    "source_code": "class LoraLoader:\n    def __init__(self):\n        self.loaded_lora = None\n\n    @classmethod\n    def INPUT_TYPES(s):\n        return {\"required\": { \"model\": (\"MODEL\",),\n                              \"clip\": (\"CLIP\", ),\n                              \"lora_name\": (folder_paths.get_filename_list(\"loras\"), ),\n                              \"strength_model\": (\"FLOAT\", {\"default\": 1.0, \"min\": -20.0, \"max\": 20.0, \"step\": 0.01}),\n                              \"strength_clip\": (\"FLOAT\", {\"default\": 1.0, \"min\": -20.0, \"max\": 20.0, \"step\": 0.01}),\n                              }}\n    RETURN_TYPES = (\"MODEL\", \"CLIP\")\n    FUNCTION = \"load_lora\"\n\n    CATEGORY = \"loaders\"\n\n    def load_lora(self, model, clip, lora_name, strength_model, strength_clip):\n        if strength_model == 0 and strength_clip == 0:\n            return (model, clip)\n\n        lora_path = folder_paths.get_full_path(\"loras\", lora_name)\n        lora = None\n        if self.loaded_lora is not None:\n            if self.loaded_lora[0] == lora_path:\n                lora = self.loaded_lora[1]\n            else:\n                temp = self.loaded_lora\n                self.loaded_lora = None\n                del temp\n\n        if lora is None:\n            lora = comfy.utils.load_torch_file(lora_path, safe_load=True)\n            self.loaded_lora = (lora_path, lora)\n\n        model_lora, clip_lora = comfy.sd.load_lora_for_models(model, clip, lora, strength_model, strength_clip)\n        return (model_lora, clip_lora)\n",
+    "display_name": "Load LoRA",
+    "output_node": "False",
+    "category": "loaders",
+    "class": "LoraLoader",
+    "input_types": {
+        "required": {
+            "model": {
+                "comfy_dtype": "MODEL",
+                "documentation": "Specifies the model to which LoRA adjustments will be applied. It is central to the node's operation as it determines the base model that will be modified.",
+                "python_dtype": "torch.nn.Module"
+            },
+            "clip": {
+                "comfy_dtype": "CLIP",
+                "documentation": "Specifies the CLIP instance to which LoRA adjustments will be applied. This allows for fine-tuning of CLIP's behavior in conjunction with the model.",
+                "python_dtype": "torch.nn.Module"
+            },
+            "lora_name": {
+                "comfy_dtype": "COMBO[STRING]",
+                "documentation": "The name of the LoRA file to be loaded. This file contains the LoRA adjustments to be applied to the model and/or CLIP instance.",
+                "python_dtype": "str"
+            },
+            "strength_model": {
+                "comfy_dtype": "FLOAT",
+                "documentation": "Determines the intensity of the LoRA adjustments applied to the model. It allows for precise control over how much the model's behavior is altered.",
+                "python_dtype": "float"
+            },
+            "strength_clip": {
+                "comfy_dtype": "FLOAT",
+                "documentation": "Determines the intensity of the LoRA adjustments applied to the CLIP instance. It allows for precise control over how much the CLIP's behavior is altered.",
+                "python_dtype": "float"
+            }
+        }
+    },
+    "output_types": {
+        "model": {
+            "comfy_dtype": "MODEL",
+            "documentation": "The modified model with LoRA adjustments applied.",
+            "python_dtype": "torch.nn.Module"
+        },
+        "clip": {
+            "comfy_dtype": "CLIP",
+            "documentation": "The modified CLIP instance with LoRA adjustments applied.",
+            "python_dtype": "torch.nn.Module"
+        }
+    },
+    "_debug_info": {
+        "_eval_score": "40/40",
+        "_has_unknown": false,
+        "_error": null
+    },
+    "common_nodes": "LoraLoader,CLIPTextEncode,Reroute,VideoLinearCFGGuidance,KSampler,FaceDetailer,ModelSamplingDiscrete,ADE_AnimateDiffLoaderWithContext,KSampler //Inspire,ToBasicPipe",
+    "usage_doc": "",
+    "_repo_info": {
+        "_repo_url": "https://github.com/comfyanonymous/ComfyUI",
+        "_commit_hash": "36f7face37320ec3c6ac85ec3c625738241deaa9"
+    }
+}

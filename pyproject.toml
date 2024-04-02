@@ -1,0 +1,64 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "nodes_doc_pipe"
+description = "Bunch of LLM related utils"
+authors = [{name = "SaltAI", email = "salt-ai@example.com"}]
+requires-python = ">=3.11"
+classifiers = ["Programming Language :: Python :: 3", "Operating System :: OS Independent"]
+readme = "README.md"
+dependencies = [
+]
+dynamic = ["version"]
+
+[tool.setuptools.packages.find]
+exclude = ["docs", "cache"]
+namespaces = false
+
+[tool.setuptools_scm]
+
+
+[tool.black]
+line-length = 120
+target-version = ['py310']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.pytest_cache
+  | \.ruff_cache
+  | \.venv
+  | build
+  | dist
+  )/
+'''
+
+[tool.ruff]
+line-length = 120
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+]
