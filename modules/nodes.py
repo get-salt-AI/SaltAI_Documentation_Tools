@@ -213,6 +213,8 @@ Nodes without errors: {sum(no_error)}/{len(no_error)}"""
         persist_dir.mkdir(parents=True, exist_ok=True)
         code_path = self.all_packs[pack_name]["code_path"]
         code_files = [code_path] if str(code_path).endswith(".py") else list(code_path.rglob("*.py"))
+        if pack_name == "Comfy":
+            code_files = [f for f in code_files if "custom_nodes" not in str(f)]
         documents = SimpleDirectoryReader(input_files=code_files).load_data()
         splitter = CodeSplitter(
             language="python", chunk_lines=chunk_lines, chunk_lines_overlap=chunk_lines_overlap, max_chars=max_chars
