@@ -1,11 +1,11 @@
 # SaltAI_Documentation_Tools
 
-Welcome to the **ComfyUI SaltAI Documentation Tools Pack**, a toolkit designed to automate the generation of documentation for ComfyUI components.
+Welcome to the **SaltAI Documentation Tools Pack**, a toolkit designed to automate the generation of documentation for ComfyUI components.
 
 Leveraging the power of Large Language Models (LLM) and Retrieval-Augmented Generation (RAG),
 this pack streamlines the process, making it effortless to create, update, and maintain comprehensive documentation for any ComfyUI node or node pack.
 
-The documentation for our plarform **Salt** was generated with only the use of the proposed pipeline, please visit
+The documentation for our platform **Salt** was generated with only the use of the proposed pipeline, please visit
 [our site](https://get-salt-ai.github.io/SaltAI-Web-Docs/md/) to check it out.
 
 
