@@ -7,6 +7,7 @@ This guide provides instructions on how to set, unset, and manage environment va
 
 Guide for setting/unsetting an environment variable for your current terminal session.
 After you close the terminal, the environment variable will be erased.
+
 Use cases: for testing new configurations or when working with temporary credentials.
 
 ### Linux and macOS
@@ -52,6 +53,7 @@ Remove-Item Env:\VARIABLE_NAME
 ## Permanently (Per User)
 
 Guide on how to set an environment variable so it persists across all terminal sessions of a current user.
+
 Use cases: you have a personal computer or a dedicated workstation where you are the primary user, you regularly use specific software tools or commands that rely on environment variables for configuration.
 
 ### Linux and macOS
@@ -90,7 +92,7 @@ source configuration_file_path
 To set in Command Prompt (cmd.exe):
 
 ```cmd
-setx VARIABLE_NAME="value"
+setx VARIABLE_NAME=value
 ```
 
 To unset in Command Prompt (cmd.exe):
@@ -102,7 +104,7 @@ setx VARIABLE_NAME=
 Note: unsetting in cmd will not actually unset the environment variable, instead, it will set the variable to an empty string.
 Use any of other proposed options for the full unset.
 
-Note: `setx` expects quotes **only** around the values containing spaces.
+Note: `setx` expects quotes **only** around the values containing spaces. Otherwise, quotes will be considered as a part of value.
 
 
 To set in PowerShell:
@@ -123,9 +125,12 @@ In all cases, reload terminal for changes to make effect.
 ## Globally (System-Wide)
 
 Guide on how to set a variable globally, system-wide, for all sessions and all users at login.
+
 Use cases: environment variables have to be configured for all users on a shared server or workstation.
 
-Please be careful with this option and don't use it if not actually needed! Caution is advised since improper use can affect system behavior.
+Please be careful with this option and don't use it if not actually needed! 
+
+Caution is advised since improper use can affect system behavior!
 
 ### Linux and macOS
 
@@ -155,7 +160,7 @@ Doing this requires administrative privileges.
 To set in Command Prompt (cmd.exe):
 
 ```cmd
-setx VARIABLE_NAME "value" /M
+setx VARIABLE_NAME value /M
 ```
 
 To unset in Command Prompt (cmd.exe):
@@ -167,7 +172,7 @@ setx VARIABLE_NAME /M
 Note: unsetting in cmd will not actually unset the environment variable, instead, it will set the variable to an empty string.
 Use any of other proposed options for the full unset.
 
-Note: `setx` expects quotes **only** around the values containing spaces.
+Note: `setx` expects quotes **only** around the values containing spaces. Otherwise, quotes will be considered as a part of value.
 
 
 To set in PowerShell:
