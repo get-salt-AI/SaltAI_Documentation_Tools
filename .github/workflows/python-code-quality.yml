@@ -13,31 +13,31 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: 3.11
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
 
-    - name: Cache pip
-      uses: actions/cache@v3
-      with:
-        path: ~/.cache/pip
-        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-        restore-keys: |
-          ${{ runner.os }}-pip-
+      - name: Cache pip
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
 
-    - name: Install dependencies
-      run: pip install pre-commit==2.20.0 ruff==0.1.5 black==23.12.0
+      - name: Install dependencies
+        run: pip install pre-commit==2.20.0 ruff==0.1.5 black==23.12.0
 
-    - name: Run pre-commit on all files
-      run: pre-commit run --all-files -v || true
+      - name: Run pre-commit on all files
+        run: pre-commit run --all-files -v || true
 
-    - name: Show changes made by pre-commit
-      run: git diff
+      - name: Show changes made by pre-commit
+        run: git diff
 
-    - name: Fail if changes are detected
-      run: |
-        git diff --quiet --exit-code || (echo "Pre-commit hooks made changes that were not committed" && false)
+      - name: Fail if changes are detected
+        run: |
+          git diff --quiet --exit-code || (echo "Pre-commit hooks made changes that were not committed" && false)

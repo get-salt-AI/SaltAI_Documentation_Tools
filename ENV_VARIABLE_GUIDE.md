@@ -69,7 +69,7 @@ To add new environment variable to the configuration either run command:
 echo 'export VARIABLE_NAME="value"' >> configuration_file_path
 ```
 
-Or go to the end of the file and manually add your variable (please be cautious with syntax to avoid mistakes): 
+Or go to the end of the file and manually add your variable (please be cautious with syntax to avoid mistakes):
 
 `export VARIABLE_NAME="value"`
 
@@ -77,7 +77,7 @@ In both cases, to apply the changes, reload terminal or run the command:
 
 ```bash
 source configuration_file_path
-``` 
+```
 
 ### Windows
 
@@ -128,7 +128,7 @@ Guide on how to set a variable globally, system-wide, for all sessions and all u
 
 Use cases: environment variables have to be configured for all users on a shared server or workstation.
 
-Please be careful with this option and don't use it if not actually needed! 
+Please be careful with this option and don't use it if not actually needed!
 
 Caution is advised since improper use can affect system behavior!
 
@@ -139,11 +139,11 @@ You need to add variable to the file that is read by all sessions and all users 
 - Linux: `/etc/environment`
 - macOS: `/etc/profile`
 
-The command for setting environment variable globbaly (requires superuser permissions): 
+The command for setting environment variable globbaly (requires superuser permissions):
 
 ```bash
 sudo sh -c 'echo "VARIABLE_NAME=value" >> configuration_file_path'
-``` 
+```
 
 ### Windows
 
