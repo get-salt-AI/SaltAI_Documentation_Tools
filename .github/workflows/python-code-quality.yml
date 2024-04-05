@@ -34,3 +34,9 @@ jobs:
 
     - name: Run pre-commit on all files
       run: pre-commit run --all-files -v
+
+    - name: Check for Changes
+      run: |
+        git diff
+        git diff --quiet --exit-code || echo "Pre-commit hooks made changes that were not committed" && false
+
