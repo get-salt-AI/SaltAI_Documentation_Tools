@@ -101,7 +101,8 @@ class LoadOpenAIModel:
 
     def load_openai_model(self, model: str, temperature: int, embed_model: str) -> Dict[str, Any]:
         if "OPENAI_API_KEY" not in os.environ or os.environ["OPENAI_API_KEY"] == "":
-            raise EnvironmentError("""The environment variable OPENAI_API_KEY is not set.
+            raise EnvironmentError(
+                """The environment variable OPENAI_API_KEY is not set.
 Please set it before proceeding (refer to the ENV_VARIABLE_GUIDE.md for details)."""
             )
         llm = OpenAI(model=model, temperature=temperature)
