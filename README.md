@@ -30,8 +30,10 @@ This project has been tested with Python 3.11.0.
 
 Set the following environmental variables before running the project:
 
-- `OPENAI_KEY`: Your personal OpenAI API key, required for sending requests to the OpenAI API. The price will depend on the model you use.
-- `ENABLE_PHOENIX_LOGGING`: Set this to `true` to enable tracing callbacks with [Phoenix](https://docs.arize.com/phoenix/tracing/how-to-tracing/instrumentation/llamaindex) (optional).
+- `OPENAI_API_KEY`: Your personal OpenAI API key, required for sending requests to the OpenAI API. The price will depend on the model you use.
+- `ENABLE_PHOENIX_LOGGING` (optional): Set this to `true` to enable tracing callbacks with [Phoenix](https://docs.arize.com/phoenix/tracing/how-to-tracing/instrumentation/llamaindex). You will see LLM calls at `http://127.0.0.1:6006`.
+
+For the detailed instructions on how to set up environmental variables across different OS and permission levels, please refer to our [guide](ENV_VARIABLE_GUIDE.md) 
 
 #### Installation Steps
 
@@ -78,7 +80,7 @@ Creates csv table containing information about all the nodes available in the sy
 Columns include : `Node name`, `Node pack name`, `Github link`, `Commit hash`.
 
 
-### Example workflow
+### Example Workflow
 Please try this simple example [workflow](examples/workflow.json)
 
 
