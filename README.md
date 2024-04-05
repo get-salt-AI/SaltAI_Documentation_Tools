@@ -6,7 +6,7 @@ Leveraging the power of Large Language Models (LLM) and Retrieval-Augmented Gene
 this pack streamlines the process, making it effortless to create, update, and maintain comprehensive documentation for any ComfyUI node or node pack.
 
 The documentation for our platform **Salt** was generated with only the use of the proposed pipeline, please visit
-[our site](https://get-salt-ai.github.io/SaltAI-Web-Docs/md/) to check it out.
+[our site](https://docs.getsalt.ai/md/) to check it out.
 
 
 ## Getting Started
