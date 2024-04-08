@@ -18,6 +18,7 @@ This project requires the following dependencies:
 - **ComfyUI**: Ensure you have ComfyUI installed. The pack has been validated with specific revisions of ComfyUI, which can be found on [GitHub](https://github.com/comfyanonymous/ComfyUI). The validated revisions are:
   - `36f7face37320ec3c6ac85ec3c625738241deaa9`
   - `327ca1313d756c4b443790a53ab0afa1945d3f3e`
+  - `30abc324c2f73e6b648093ccd4741dece20be1e5`
 
 - **ComfyUI-Custom-Scripts**: This is required to run an example workflow. You can find it on [GitHub](https://github.com/pythongosssss/ComfyUI-Custom-Scripts).
 
